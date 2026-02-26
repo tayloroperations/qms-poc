@@ -52,9 +52,7 @@
 </head>
 <body class="bg-slate-100 overflow-hidden h-screen">
 
-<!-- ═══════════════════════════════════════
-     LOGIN
-═══════════════════════════════════════ -->
+<!-- LOGIN -->
 <div id="loginModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-8">
     <div class="text-center mb-7">
@@ -76,22 +74,18 @@
     <input type="text" id="loginName" placeholder="e.g. Jane Smith"
       class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm mb-4"
       onkeydown="if(event.key==='Enter')loginUser()">
-    <button onclick="loginUser()"
+    <button type="button" onclick="loginUser()"
       class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg py-2.5 text-sm transition-colors">
       Enter QMS
     </button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MAIN APP
-═══════════════════════════════════════ -->
+<!-- MAIN APP -->
 <div id="mainApp" style="display:none" class="flex h-screen">
 
   <!-- SIDEBAR -->
   <aside class="w-62 bg-slate-900 flex flex-col flex-shrink-0" style="width:15rem">
-
-    <!-- Brand -->
     <div class="px-5 py-4 border-b border-slate-700/60">
       <div class="flex items-center space-x-2.5">
         <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -104,7 +98,6 @@
       </div>
     </div>
 
-    <!-- Demo Role Switcher -->
     <div class="px-4 py-3 border-b border-slate-700/60 bg-slate-800/40">
       <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Demo Role</p>
       <div class="relative">
@@ -123,11 +116,9 @@
       <p class="text-slate-500 text-xs mt-1.5" id="roleCaption">Can create &amp; submit deviations</p>
     </div>
 
-    <!-- Nav -->
     <nav class="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto slim">
       <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider px-2 mb-3">Menu</p>
-
-      <button onclick="showView('dashboard')" id="nav-dashboard"
+      <button type="button" onclick="showView('dashboard')" id="nav-dashboard"
         class="nav-btn w-full text-left px-3 py-2.5 rounded-lg flex items-center space-x-2.5 text-sm">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -138,8 +129,7 @@
         </svg>
         <span>Dashboard</span>
       </button>
-
-      <button onclick="showView('deviations')" id="nav-deviations"
+      <button type="button" onclick="showView('deviations')" id="nav-deviations"
         class="nav-btn w-full text-left px-3 py-2.5 rounded-lg flex items-center space-x-2.5 text-sm">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -149,8 +139,7 @@
         <span>Deviations</span>
         <span id="bdg-dev" class="ml-auto bg-slate-700 text-slate-300 text-xs rounded-full px-1.5 hidden">0</span>
       </button>
-
-      <button onclick="showView('capas')" id="nav-capas"
+      <button type="button" onclick="showView('capas')" id="nav-capas"
         class="nav-btn w-full text-left px-3 py-2.5 rounded-lg flex items-center space-x-2.5 text-sm">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -160,8 +149,7 @@
         <span>CAPA</span>
         <span id="bdg-capa" class="ml-auto bg-slate-700 text-slate-300 text-xs rounded-full px-1.5 hidden">0</span>
       </button>
-
-      <button onclick="showView('permissions')" id="nav-permissions"
+      <button type="button" onclick="showView('permissions')" id="nav-permissions"
         class="nav-btn w-full text-left px-3 py-2.5 rounded-lg flex items-center space-x-2.5 text-sm">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -172,7 +160,6 @@
       </button>
     </nav>
 
-    <!-- User -->
     <div class="px-4 py-3 border-t border-slate-700/60 flex items-center space-x-2.5">
       <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
         <span class="text-white text-xs font-bold" id="userInitial">?</span>
@@ -187,7 +174,7 @@
   <!-- CONTENT AREA -->
   <main class="flex-1 overflow-hidden flex flex-col">
 
-    <!-- ── DASHBOARD ── -->
+    <!-- DASHBOARD -->
     <div id="view-dashboard" class="hidden flex-1 overflow-y-auto slim p-8">
       <div class="max-w-5xl mx-auto">
         <div class="mb-7">
@@ -198,28 +185,28 @@
         <div class="bg-white rounded-xl border border-slate-200 mb-5">
           <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
             <h2 class="font-semibold text-slate-900 text-sm">Open Deviations</h2>
-            <button onclick="showView('deviations')" class="text-blue-600 text-xs hover:underline">View All</button>
+            <button type="button" onclick="showView('deviations')" class="text-blue-600 text-xs hover:underline">View All</button>
           </div>
           <div id="dashOpenDevs"></div>
         </div>
         <div class="bg-white rounded-xl border border-slate-200">
           <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
             <h2 class="font-semibold text-slate-900 text-sm">Open CAPAs</h2>
-            <button onclick="showView('capas')" class="text-blue-600 text-xs hover:underline">View All</button>
+            <button type="button" onclick="showView('capas')" class="text-blue-600 text-xs hover:underline">View All</button>
           </div>
           <div id="dashOpenCapas"></div>
         </div>
       </div>
     </div>
 
-    <!-- ── DEVIATIONS TABLE ── -->
+    <!-- DEVIATIONS TABLE -->
     <div id="view-deviations" class="hidden flex-1 overflow-hidden flex flex-col">
       <div class="px-8 py-5 border-b border-slate-200 bg-white flex items-center justify-between flex-shrink-0">
         <div>
           <h1 class="text-lg font-bold text-slate-900">Deviations</h1>
           <p class="text-slate-500 text-xs mt-0.5">Track quality deviations through resolution</p>
         </div>
-        <button onclick="openDevForm()"
+        <button type="button" onclick="openDevForm()"
           class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -273,19 +260,19 @@
                  c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
           </svg>
           <p class="text-slate-500 text-sm">No deviations found</p>
-          <button onclick="openDevForm()" class="mt-3 text-blue-600 text-sm hover:underline">Create the first one</button>
+          <button type="button" onclick="openDevForm()" class="mt-3 text-blue-600 text-sm hover:underline">Create the first one</button>
         </div>
       </div>
     </div>
 
-    <!-- ── CAPA TABLE ── -->
+    <!-- CAPA TABLE -->
     <div id="view-capas" class="hidden flex-1 overflow-hidden flex flex-col">
       <div class="px-8 py-5 border-b border-slate-200 bg-white flex items-center justify-between flex-shrink-0">
         <div>
           <h1 class="text-lg font-bold text-slate-900">CAPA</h1>
           <p class="text-slate-500 text-xs mt-0.5">Corrective and Preventive Actions</p>
         </div>
-        <button onclick="openCapaForm()"
+        <button type="button" onclick="openCapaForm()"
           class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -321,15 +308,13 @@
       </div>
     </div>
 
-    <!-- ── PERMISSIONS ── -->
+    <!-- PERMISSIONS -->
     <div id="view-permissions" class="hidden flex-1 overflow-y-auto slim p-8">
       <div class="max-w-5xl mx-auto">
         <div class="mb-7">
           <h1 class="text-2xl font-bold text-slate-900">Roles &amp; Permissions</h1>
           <p class="text-slate-500 text-sm mt-1">Define what each role can do in the QMS workflow</p>
         </div>
-
-        <!-- Current role banner -->
         <div class="bg-blue-50 border border-blue-200 rounded-xl px-6 py-4 mb-7 flex items-center justify-between">
           <div>
             <p class="text-xs font-semibold text-blue-500 uppercase tracking-wider mb-0.5">Currently demoing as</p>
@@ -340,19 +325,12 @@
             <p class="text-xs text-blue-600 mb-1.5 font-medium">Switch demo role:</p>
             <select onchange="changeRole(this.value);this.value=currentRole"
               class="bg-white border border-blue-300 text-blue-900 text-sm rounded-lg px-3 py-2">
-              <option>Reporter</option>
-              <option>QA Reviewer</option>
-              <option>Investigator</option>
-              <option>CAPA Owner</option>
-              <option>QA Lead</option>
+              <option>Reporter</option><option>QA Reviewer</option><option>Investigator</option>
+              <option>CAPA Owner</option><option>QA Lead</option>
             </select>
           </div>
         </div>
-
-        <!-- Role cards -->
         <div class="grid grid-cols-3 gap-4 mb-8" id="roleCards"></div>
-
-        <!-- Permissions matrix -->
         <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-100">
             <h2 class="font-semibold text-slate-900">Permissions Matrix</h2>
@@ -361,8 +339,6 @@
             <table class="w-full text-sm" id="permMatrix"></table>
           </div>
         </div>
-
-        <!-- Workflow diagram -->
         <div class="bg-white rounded-xl border border-slate-200 mt-5 p-6">
           <h2 class="font-semibold text-slate-900 mb-4">Deviation Workflow</h2>
           <div class="flex flex-wrap gap-2 items-center text-xs">
@@ -407,11 +383,9 @@
   </main>
 </div>
 
-<!-- ═══════════════════════════════════════
-     DEVIATION FORM MODAL (Create / Edit)
-═══════════════════════════════════════ -->
+<!-- DEVIATION FORM MODAL -->
 <div id="devFormModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl flex flex-col" style="max-height:92vh">
     <div class="px-7 py-5 border-b border-slate-100 flex items-center justify-between flex-shrink-0">
       <div>
         <h2 class="font-bold text-slate-900" id="devFormHeading">New Deviation</h2>
@@ -423,50 +397,42 @@
         </svg>
       </button>
     </div>
-
     <div class="flex-1 overflow-y-auto slim px-7 py-6 space-y-5">
       <input type="hidden" id="devFormEditId">
-
       <div>
         <label class="lbl">Title <span class="text-red-500">*</span></label>
         <input type="text" id="devFTitle" class="field w-full" placeholder="Brief title describing the deviation">
       </div>
-
       <div>
         <label class="lbl">Description</label>
         <textarea id="devFDesc" class="field w-full" rows="3" placeholder="Detailed description of what deviated and how it was discovered…"></textarea>
       </div>
-
       <div>
         <label class="lbl">Immediate Action Taken</label>
         <textarea id="devFImmediate" class="field w-full" rows="3" placeholder="What was done immediately upon discovery to contain the issue?"></textarea>
       </div>
-
       <div>
         <label class="lbl">Deviated SOP</label>
         <input type="text" id="devFSop" class="field w-full" placeholder="e.g. SOP-LAB-042 — Sample Handling Procedure">
       </div>
-
       <div>
         <label class="lbl">LIMS Sample IDs</label>
-        <p class="text-xs text-slate-400 mb-1.5">Type an ID and press Enter to add. Add as many as needed.</p>
+        <p class="text-xs text-slate-400 mb-1.5">Type an ID and press Enter to add.</p>
         <div class="tag-wrap" id="sampleTagWrap" onclick="document.getElementById('sampleTagInput').focus()">
           <div id="sampleTagDisplay" class="flex flex-wrap gap-1.5"></div>
           <input id="sampleTagInput" placeholder="e.g. SMP-00123"
             onkeydown="handleTagKey(event,'sampleIds')" class="text-sm min-w-32 outline-none bg-transparent">
         </div>
       </div>
-
       <div>
         <label class="lbl">LIMS Order IDs</label>
-        <p class="text-xs text-slate-400 mb-1.5">Type an ID and press Enter to add. Add as many as needed.</p>
+        <p class="text-xs text-slate-400 mb-1.5">Type an ID and press Enter to add.</p>
         <div class="tag-wrap" id="orderTagWrap" onclick="document.getElementById('orderTagInput').focus()">
           <div id="orderTagDisplay" class="flex flex-wrap gap-1.5"></div>
           <input id="orderTagInput" placeholder="e.g. ORD-00456"
             onkeydown="handleTagKey(event,'orderIds')" class="text-sm min-w-32 outline-none bg-transparent">
         </div>
       </div>
-
       <div class="grid grid-cols-2 gap-5">
         <div>
           <label class="lbl">Owner</label>
@@ -478,7 +444,6 @@
         </div>
       </div>
     </div>
-
     <div class="px-7 py-4 border-t border-slate-100 flex items-center justify-between bg-slate-50 rounded-b-2xl flex-shrink-0">
       <button type="button" onclick="closeModal('devFormModal')"
         class="px-4 py-2 text-sm text-slate-500 font-medium rounded-lg hover:bg-slate-100 transition-colors">Close</button>
@@ -492,13 +457,9 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     DEVIATION DETAIL MODAL
-═══════════════════════════════════════ -->
+<!-- DEVIATION DETAIL MODAL -->
 <div id="devDetailModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[92vh] flex flex-col">
-
-    <!-- Header -->
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl flex flex-col" style="max-height:92vh">
     <div class="px-7 py-4 border-b border-slate-100 flex items-center justify-between flex-shrink-0">
       <div class="flex items-center space-x-3 min-w-0">
         <span class="font-mono text-sm font-bold text-blue-600 flex-shrink-0" id="ddId">DEV-0000</span>
@@ -507,52 +468,32 @@
         <span id="ddSevBadge" class="flex-shrink-0"></span>
       </div>
       <div class="flex items-center space-x-2 flex-shrink-0">
-        <button onclick="openDevForm(activeDetailId)"
+        <button type="button" onclick="openDevForm(activeDetailId)"
           class="px-3 py-1.5 text-xs text-slate-600 font-medium rounded-lg hover:bg-slate-100 border border-slate-200 transition-colors">Edit</button>
-        <button onclick="closeModal('devDetailModal')" class="text-slate-400 hover:text-slate-600 transition-colors ml-1">
+        <button type="button" onclick="closeModal('devDetailModal')" class="text-slate-400 hover:text-slate-600 transition-colors ml-1">
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
       </div>
     </div>
-
-    <!-- Workflow action bar -->
     <div id="ddActionBar" class="px-7 py-3 bg-slate-50 border-b border-slate-100 flex items-center gap-3 flex-shrink-0 flex-wrap"></div>
-
-    <!-- Tabs -->
     <div class="flex px-7 border-b border-slate-100 flex-shrink-0 space-x-6">
-      <button onclick="showDTab('info')"    id="dtab-info"    class="text-sm font-medium py-3.5 border-b-2 border-blue-600 text-blue-600">Details</button>
-      <button onclick="showDTab('invest')"  id="dtab-invest"  class="text-sm font-medium py-3.5 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Investigation</button>
-      <button onclick="showDTab('capa')"    id="dtab-capa"    class="text-sm font-medium py-3.5 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Decision &amp; CAPA</button>
-      <button onclick="showDTab('audit')"   id="dtab-audit"   class="text-sm font-medium py-3.5 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Audit Log</button>
+      <button type="button" onclick="showDTab('info')" id="dtab-info" class="text-sm font-medium py-3.5 border-b-2 border-blue-600 text-blue-600">Details</button>
+      <button type="button" onclick="showDTab('invest')" id="dtab-invest" class="text-sm font-medium py-3.5 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Investigation</button>
+      <button type="button" onclick="showDTab('capa')" id="dtab-capa" class="text-sm font-medium py-3.5 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Decision &amp; CAPA</button>
+      <button type="button" onclick="showDTab('audit')" id="dtab-audit" class="text-sm font-medium py-3.5 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Audit Log</button>
     </div>
-
-    <!-- Tab content -->
     <div class="flex-1 overflow-y-auto slim">
-      <!-- Details -->
-      <div id="dtab-info-c" class="px-7 py-6">
-        <div class="grid grid-cols-2 gap-6" id="ddInfoGrid"></div>
-      </div>
-      <!-- Investigation -->
-      <div id="dtab-invest-c" class="hidden px-7 py-6">
-        <div id="ddInvestGrid"></div>
-      </div>
-      <!-- Decision & CAPA -->
-      <div id="dtab-capa-c" class="hidden px-7 py-6">
-        <div id="ddCapaContent"></div>
-      </div>
-      <!-- Audit log -->
-      <div id="dtab-audit-c" class="hidden px-7 py-6">
-        <div id="ddAuditLog"></div>
-      </div>
+      <div id="dtab-info-c" class="px-7 py-6"><div class="grid grid-cols-2 gap-6" id="ddInfoGrid"></div></div>
+      <div id="dtab-invest-c" class="hidden px-7 py-6"><div id="ddInvestGrid"></div></div>
+      <div id="dtab-capa-c" class="hidden px-7 py-6"><div id="ddCapaContent"></div></div>
+      <div id="dtab-audit-c" class="hidden px-7 py-6"><div id="ddAuditLog"></div></div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     TRANSITION ACTION MODAL
-═══════════════════════════════════════ -->
+<!-- TRANSITION ACTION MODAL -->
 <div id="transModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
     <div class="px-7 py-5 border-b border-slate-100 flex items-center justify-between">
@@ -560,7 +501,7 @@
         <h2 class="font-bold text-slate-900" id="transTitle">Confirm Action</h2>
         <p class="text-slate-400 text-xs mt-0.5" id="transSub"></p>
       </div>
-      <button onclick="closeModal('transModal')" class="text-slate-400 hover:text-slate-600 transition-colors">
+      <button type="button" onclick="closeModal('transModal')" class="text-slate-400 hover:text-slate-600 transition-colors">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -568,25 +509,23 @@
     </div>
     <div class="px-7 py-6 space-y-4" id="transFields"></div>
     <div class="px-7 py-4 border-t border-slate-100 flex justify-end space-x-3 bg-slate-50 rounded-b-2xl">
-      <button onclick="closeModal('transModal')"
+      <button type="button" onclick="closeModal('transModal')"
         class="px-4 py-2 text-sm text-slate-600 font-medium rounded-lg hover:bg-slate-100 transition-colors">Cancel</button>
-      <button onclick="executeTransition()" id="transConfirmBtn"
+      <button type="button" onclick="executeTransition()" id="transConfirmBtn"
         class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">Confirm</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CAPA FORM MODAL
-═══════════════════════════════════════ -->
+<!-- CAPA FORM MODAL -->
 <div id="capaFormModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[92vh] flex flex-col">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl flex flex-col" style="max-height:92vh">
     <div class="px-7 py-5 border-b border-slate-100 flex items-center justify-between flex-shrink-0">
       <div>
         <h2 class="font-bold text-slate-900" id="capaFormHeading">New CAPA</h2>
         <p class="text-slate-400 text-xs mt-0.5" id="capaFormSub">ID will be assigned on save</p>
       </div>
-      <button onclick="closeModal('capaFormModal')" class="text-slate-400 hover:text-slate-600 transition-colors">
+      <button type="button" onclick="closeModal('capaFormModal')" class="text-slate-400 hover:text-slate-600 transition-colors">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -596,9 +535,7 @@
       <input type="hidden" id="capaFormEditId">
       <div>
         <label class="lbl">Related Deviation</label>
-        <select id="capaFDev" class="field w-full">
-          <option value="">None (standalone)</option>
-        </select>
+        <select id="capaFDev" class="field w-full"><option value="">None (standalone)</option></select>
       </div>
       <div>
         <label class="lbl">Status</label>
@@ -608,17 +545,17 @@
       </div>
       <div>
         <label class="lbl">Action(s) <span class="text-red-500">*</span></label>
-        <textarea id="capaFActions" class="field w-full" rows="4" placeholder="Describe corrective and preventive actions to be taken…"></textarea>
+        <textarea id="capaFActions" class="field w-full" rows="4" placeholder="Describe corrective and preventive actions…"></textarea>
       </div>
       <div>
         <label class="lbl">Effectiveness Check</label>
-        <textarea id="capaFEffectiveness" class="field w-full" rows="3" placeholder="How will effectiveness be measured and verified?"></textarea>
+        <textarea id="capaFEffectiveness" class="field w-full" rows="3" placeholder="How will effectiveness be measured?"></textarea>
       </div>
     </div>
     <div class="px-7 py-4 border-t border-slate-100 flex justify-end space-x-3 bg-slate-50 rounded-b-2xl flex-shrink-0">
-      <button onclick="closeModal('capaFormModal')"
+      <button type="button" onclick="closeModal('capaFormModal')"
         class="px-4 py-2 text-sm text-slate-600 font-medium rounded-lg hover:bg-slate-100 transition-colors">Cancel</button>
-      <button onclick="saveCapa()"
+      <button type="button" onclick="saveCapa()"
         class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">Save CAPA</button>
     </div>
   </div>
@@ -632,7 +569,6 @@
   <span id="toastMsg"></span>
 </div>
 
-<!-- Shared field styles -->
 <style>
   .lbl { display:block;font-size:.75rem;font-weight:600;color:#374151;margin-bottom:.375rem; }
   .field { border:1px solid #d1d5db;border-radius:.5rem;padding:.625rem .875rem;font-size:.875rem;
@@ -641,15 +577,10 @@
         color:#64748b;margin-bottom:.25rem; }
 </style>
 
-<!-- ═══════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════ -->
 <script>
 'use strict';
 
-/* ───────────────────────────────
-   DATA STORE
-─────────────────────────────── */
+/* DATA STORE */
 let currentUser = '';
 let currentRole = 'Reporter';
 let db = { deviations:[], capas:[], counters:{dev:0,capa:0} };
@@ -665,28 +596,24 @@ function loadDb() {
 }
 function saveDb() { localStorage.setItem('qms2_data', JSON.stringify(db)); }
 
-/* ───────────────────────────────
-   ID GENERATORS
-─────────────────────────────── */
+/* ID GENERATORS */
 function genDev()  { db.counters.dev++;  saveDb(); return 'DEV-'  + String(db.counters.dev).padStart(4,'0'); }
 function genCapa() { db.counters.capa++; saveDb(); return 'CAPA-' + String(db.counters.capa).padStart(4,'0'); }
 
-/* ───────────────────────────────
-   WORKFLOW DEFINITIONS
-─────────────────────────────── */
+/* WORKFLOW DEFINITIONS */
 const ROLE_CAPTIONS = {
-  'Reporter':    'Can create and submit deviations',
-  'QA Reviewer': 'Can accept, classify, assign and make CAPA decisions',
-  'Investigator':'Can document root cause analysis and complete investigations',
-  'CAPA Owner':  'Can progress CAPA actions through to verification',
-  'QA Lead':     'Full access — all workflow actions including final closure'
+  'Reporter':'Can create and submit deviations',
+  'QA Reviewer':'Can accept, assign and make CAPA decisions',
+  'Investigator':'Can classify severity, document root cause analysis and complete investigations',
+  'CAPA Owner':'Can progress CAPA actions through to verification',
+  'QA Lead':'Full access — all workflow actions including final closure'
 };
 
 const ROLE_COLORS = {
   'Reporter':'blue','QA Reviewer':'violet','Investigator':'amber','CAPA Owner':'orange','QA Lead':'green'
 };
 
-// Transitions: status → array of possible actions
+/* CHANGE 3: Severity REMOVED from Submitted, ADDED to Investigation In Progress */
 const TRANSITIONS = {
   'Draft': [{
     id:'submit', label:'Submit for QA Review', next:'Submitted',
@@ -697,9 +624,7 @@ const TRANSITIONS = {
     id:'accept', label:'Accept & Begin QA Review', next:'Under QA Review',
     roles:['QA Reviewer','QA Lead'],
     color:'bg-violet-600 hover:bg-violet-700',
-    fields:[
-      {id:'severity',label:'Classify Severity',type:'select',options:['Minor','Major','Critical'],required:true}
-    ]
+    fields:[]
   }],
   'Under QA Review': [{
     id:'assign', label:'Assign for Investigation', next:'Investigation In Progress',
@@ -714,7 +639,8 @@ const TRANSITIONS = {
     roles:['Investigator','QA Lead'],
     color:'bg-teal-600 hover:bg-teal-700',
     fields:[
-      {id:'rootCause',label:'Root Cause Analysis',type:'textarea',placeholder:'Document the root cause findings (5-Why, Fishbone, FMEA, etc.)…',required:true},
+      {id:'severity',label:'Classify Severity',type:'select',options:['Minor','Major','Critical'],required:true},
+      {id:'rootCause',label:'Root Cause Analysis',type:'textarea',placeholder:'Document the root cause findings (5-Why, Fishbone, FMEA, etc.)…',required:true,rows:6},
       {id:'riskAssessment',label:'Risk Assessment',type:'textarea',placeholder:'Describe the risk level and potential impact…',required:false}
     ]
   }],
@@ -725,7 +651,7 @@ const TRANSITIONS = {
       color:'bg-orange-500 hover:bg-orange-600',
       fields:[
         {id:'decisionNotes',label:'Decision Rationale',type:'textarea',placeholder:'Why is a CAPA required?',required:false},
-        {id:'capaActions',label:'Initial CAPA Actions',type:'textarea',placeholder:'Outline the corrective and preventive actions to be taken…',required:true}
+        {id:'capaActions',label:'Initial CAPA Actions',type:'textarea',placeholder:'Outline the corrective and preventive actions…',required:true}
       ]
     },
     {
@@ -748,11 +674,11 @@ const TRANSITIONS = {
     color:'bg-blue-600 hover:bg-blue-700', fields:[]
   }],
   'CAPA Verification': [{
-    id:'close-capa', label:'Verify &amp; Close', next:'Closed',
+    id:'close-capa', label:'Verify & Close', next:'Closed',
     roles:['QA Lead'],
     color:'bg-green-600 hover:bg-green-700',
     fields:[
-      {id:'effectivenessCheck',label:'Effectiveness Check Notes',type:'textarea',placeholder:'Confirm the actions were effective in preventing recurrence…',required:true},
+      {id:'effectivenessCheck',label:'Effectiveness Check Notes',type:'textarea',placeholder:'Confirm the actions were effective…',required:true},
       {id:'closingNotes',label:'Closing Notes',type:'textarea',placeholder:'Any final observations…',required:false}
     ]
   }],
@@ -761,7 +687,7 @@ const TRANSITIONS = {
     roles:['QA Reviewer','QA Lead'],
     color:'bg-green-600 hover:bg-green-700',
     fields:[
-      {id:'closingNotes',label:'Closing Notes',type:'textarea',placeholder:'Any final observations before closure…',required:false}
+      {id:'closingNotes',label:'Closing Notes',type:'textarea',placeholder:'Any final observations…',required:false}
     ]
   }]
 };
@@ -769,27 +695,24 @@ const TRANSITIONS = {
 const PERMISSIONS_MATRIX = [
   { action:'Create Deviation',          Reporter:true,  'QA Reviewer':true,  Investigator:true,  'CAPA Owner':true,  'QA Lead':true  },
   { action:'Submit Deviation',          Reporter:true,  'QA Reviewer':true,  Investigator:true,  'CAPA Owner':true,  'QA Lead':true  },
-  { action:'Accept & Classify (QA)',    Reporter:false, 'QA Reviewer':true,  Investigator:false, 'CAPA Owner':false, 'QA Lead':true  },
+  { action:'Accept for QA Review',      Reporter:false, 'QA Reviewer':true,  Investigator:false, 'CAPA Owner':false, 'QA Lead':true  },
   { action:'Assign Investigator',       Reporter:false, 'QA Reviewer':true,  Investigator:false, 'CAPA Owner':false, 'QA Lead':true  },
-  { action:'Complete Investigation (RCA)', Reporter:false, 'QA Reviewer':false, Investigator:true,  'CAPA Owner':false, 'QA Lead':true  },
+  { action:'Classify Severity & Complete Investigation', Reporter:false, 'QA Reviewer':false, Investigator:true, 'CAPA Owner':false, 'QA Lead':true },
   { action:'Make CAPA Decision',        Reporter:false, 'QA Reviewer':true,  Investigator:false, 'CAPA Owner':false, 'QA Lead':true  },
   { action:'Progress CAPA Actions',     Reporter:false, 'QA Reviewer':false, Investigator:false, 'CAPA Owner':true,  'QA Lead':true  },
-  { action:'Submit CAPA for Verification', Reporter:false, 'QA Reviewer':false, Investigator:false, 'CAPA Owner':true,  'QA Lead':true  },
+  { action:'Submit CAPA for Verification', Reporter:false, 'QA Reviewer':false, Investigator:false, 'CAPA Owner':true, 'QA Lead':true },
   { action:'Verify & Close',            Reporter:false, 'QA Reviewer':false, Investigator:false, 'CAPA Owner':false, 'QA Lead':true  },
   { action:'Close (No CAPA path)',      Reporter:false, 'QA Reviewer':true,  Investigator:false, 'CAPA Owner':false, 'QA Lead':true  },
 ];
 
-/* ───────────────────────────────
-   UTILITIES
-─────────────────────────────── */
+/* UTILITIES */
 function esc(s) {
   if (s==null) return '';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function fmtDate(iso) {
   if (!iso) return '—';
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  return new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 }
 function fmtDT(iso) {
   if (!iso) return '—';
@@ -799,21 +722,19 @@ function fmtDT(iso) {
 }
 function stateBadge(status) {
   const closed = status === 'Closed';
-  return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${closed?'bg-slate-200 text-slate-600':'bg-green-100 text-green-700'}">${closed?'CLOSED':'OPEN'}</span>`;
+  return '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold '+(closed?'bg-slate-200 text-slate-600':'bg-green-100 text-green-700')+'">'+(closed?'CLOSED':'OPEN')+'</span>';
 }
 function stBadge(status) {
-  const map = {
-    'Draft':'s-draft','Submitted':'s-submitted','Under QA Review':'s-qareview',
+  const map = {'Draft':'s-draft','Submitted':'s-submitted','Under QA Review':'s-qareview',
     'Investigation In Progress':'s-invest','Investigation Completed':'s-investdone',
     'CAPA Open':'s-capaopen','CAPA In Progress':'s-capawip',
-    'CAPA Verification':'s-capaver','Ready to Close':'s-readyclose','Closed':'s-closed'
-  };
-  return `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${map[status]||'s-draft'}">${esc(status)||'—'}</span>`;
+    'CAPA Verification':'s-capaver','Ready to Close':'s-readyclose','Closed':'s-closed'};
+  return '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold '+(map[status]||'s-draft')+'">'+esc(status||'—')+'</span>';
 }
 function sevBadge(s) {
   if (!s) return '';
   const cls = {Minor:'sev-minor',Major:'sev-major',Critical:'sev-critical'};
-  return `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${cls[s]||''}">${esc(s)}</span>`;
+  return '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold '+(cls[s]||'')+'">'+esc(s)+'</span>';
 }
 function toast(msg, err) {
   const el = document.getElementById('toast');
@@ -824,58 +745,48 @@ function toast(msg, err) {
     : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>';
   ic.className = 'w-4 h-4 flex-shrink-0 ' + (err ? 'text-red-400' : 'text-green-400');
   el.classList.remove('hidden');
-  clearTimeout(el._t); el._t = setTimeout(() => el.classList.add('hidden'), 3200);
+  clearTimeout(el._t); el._t = setTimeout(function(){ el.classList.add('hidden'); }, 3200);
 }
 function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-
 function auditEntry(action, changes) {
-  return { ts: new Date().toISOString(), user: currentUser, role: currentRole, action, changes: changes||{} };
+  return { ts: new Date().toISOString(), user: currentUser, role: currentRole, action: action, changes: changes||{} };
 }
 function diffFields(o, n, keys) {
-  const c = {};
-  keys.forEach(k => { if (String(o[k]??'') !== String(n[k]??'')) c[k] = {from:o[k]??'',to:n[k]??''}; });
+  var c = {};
+  keys.forEach(function(k){ if (String(o[k]||'') !== String(n[k]||'')) c[k] = {from:o[k]||'',to:n[k]||''}; });
   return c;
 }
 
-/* ───────────────────────────────
-   TAG INPUT
-─────────────────────────────── */
+/* TAG INPUT */
 function handleTagKey(e, key) {
   if (e.key === 'Enter' || e.key === ',') {
     e.preventDefault();
-    const val = e.target.value.trim().replace(/,/g,'');
-    if (val && !formTags[key].includes(val)) {
-      formTags[key].push(val);
-      renderTagDisplay(key);
-    }
+    var val = e.target.value.trim().replace(/,/g,'');
+    if (val && !formTags[key].includes(val)) { formTags[key].push(val); renderTagDisplay(key); }
     e.target.value = '';
   }
   if (e.key === 'Backspace' && e.target.value === '' && formTags[key].length > 0) {
-    formTags[key].pop();
-    renderTagDisplay(key);
+    formTags[key].pop(); renderTagDisplay(key);
   }
 }
 function removeTag(key, val) {
-  formTags[key] = formTags[key].filter(t => t !== val);
+  formTags[key] = formTags[key].filter(function(t){ return t !== val; });
   renderTagDisplay(key);
 }
 function renderTagDisplay(key) {
-  const displayId = key === 'sampleIds' ? 'sampleTagDisplay' : 'orderTagDisplay';
-  document.getElementById(displayId).innerHTML = formTags[key].map(t =>
-    `<span class="tag-chip">${esc(t)}<button type="button" onclick="removeTag('${key}','${esc(t)}')"
-       class="text-blue-400 hover:text-red-500 ml-0.5 font-bold text-sm leading-none">×</button></span>`
-  ).join('');
+  var displayId = key === 'sampleIds' ? 'sampleTagDisplay' : 'orderTagDisplay';
+  document.getElementById(displayId).innerHTML = formTags[key].map(function(t){
+    return '<span class="tag-chip">'+esc(t)+'<button type="button" onclick="removeTag(\''+key+'\',\''+esc(t)+'\')" class="text-blue-400 hover:text-red-500 ml-0.5 font-bold text-sm leading-none">\u00d7</button></span>';
+  }).join('');
 }
 function tagsHtml(arr) {
   if (!arr || arr.length === 0) return '<span class="text-slate-400 text-sm">—</span>';
-  return arr.map(t => `<span class="tag-chip">${esc(t)}</span>`).join(' ');
+  return arr.map(function(t){ return '<span class="tag-chip">'+esc(t)+'</span>'; }).join(' ');
 }
 
-/* ───────────────────────────────
-   LOGIN & ROLE
-─────────────────────────────── */
+/* LOGIN & ROLE */
 function loginUser() {
-  const name = document.getElementById('loginName').value.trim();
+  var name = document.getElementById('loginName').value.trim();
   if (!name) { toast('Please enter your name', true); return; }
   currentUser = name;
   localStorage.setItem('qms2_user', name);
@@ -890,10 +801,8 @@ function changeRole(role) {
   document.getElementById('userRoleDisplay').textContent = role;
   document.getElementById('permCurrentRole').textContent = role;
   document.getElementById('permRoleDesc').textContent = ROLE_CAPTIONS[role]||'';
-  // Refresh current view
   if (activeDetailId) {
-    const bar = buildActionBar(activeDetailId);
-    document.getElementById('ddActionBar').innerHTML = bar;
+    document.getElementById('ddActionBar').innerHTML = buildActionBar(activeDetailId);
   }
 }
 
@@ -907,11 +816,9 @@ function initApp() {
   showView('dashboard');
 }
 
-/* ───────────────────────────────
-   NAVIGATION
-─────────────────────────────── */
+/* NAVIGATION */
 function showView(v) {
-  ['dashboard','deviations','capas','permissions'].forEach(n => {
+  ['dashboard','deviations','capas','permissions'].forEach(function(n){
     document.getElementById('view-'+n).classList.add('hidden');
     document.getElementById('nav-'+n).classList.remove('nav-active');
   });
@@ -924,319 +831,303 @@ function showView(v) {
 }
 
 function updateBadges() {
-  const openD = db.deviations.filter(d => d.status !== 'Closed').length;
-  const openC = db.capas.filter(c => c.status !== 'Closed').length;
+  var openD = db.deviations.filter(function(d){ return d.status !== 'Closed'; }).length;
+  var openC = db.capas.filter(function(c){ return c.status !== 'Closed'; }).length;
   setBadge('bdg-dev', openD);
   setBadge('bdg-capa', openC);
 }
 function setBadge(id, n) {
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   if (n>0) { el.textContent=n; el.classList.remove('hidden'); } else el.classList.add('hidden');
 }
 
-/* ───────────────────────────────
-   DASHBOARD
-─────────────────────────────── */
+/* DASHBOARD */
 function renderDashboard() {
-  const total    = db.deviations.length;
-  const open     = db.deviations.filter(d=>d.status!=='Closed').length;
-  const openCapa = db.capas.filter(c=>c.status!=='Closed').length;
-  const closed   = db.deviations.filter(d=>d.status==='Closed').length;
+  var total = db.deviations.length;
+  var open = db.deviations.filter(function(d){return d.status!=='Closed';}).length;
+  var openCapa = db.capas.filter(function(c){return c.status!=='Closed';}).length;
+  var closed = db.deviations.filter(function(d){return d.status==='Closed';}).length;
+  document.getElementById('dashStats').innerHTML =
+    sc('Total Deviations',total,'text-slate-900')+
+    sc('Open',open,'text-blue-600')+
+    sc('Open CAPAs',openCapa,'text-amber-600')+
+    sc('Closed',closed,'text-slate-500');
 
-  document.getElementById('dashStats').innerHTML = `
-    ${sc('Total Deviations',total,'text-slate-900')}
-    ${sc('Open',open,'text-blue-600')}
-    ${sc('Open CAPAs',openCapa,'text-amber-600')}
-    ${sc('Closed',closed,'text-slate-500')}
-  `;
-
-  const openDevs = db.deviations.filter(d=>d.status!=='Closed')
-    .sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
-
+  var openDevs = db.deviations.filter(function(d){return d.status!=='Closed';})
+    .sort(function(a,b){return new Date(b.createdAt)-new Date(a.createdAt);}).slice(0,5);
   document.getElementById('dashOpenDevs').innerHTML = openDevs.length === 0
     ? '<div class="py-8 text-center text-slate-400 text-sm">No open deviations</div>'
     : miniDevTable(openDevs);
 
-  const openCapas = db.capas.filter(c=>c.status!=='Closed')
-    .sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
-
+  var openCapas = db.capas.filter(function(c){return c.status!=='Closed';})
+    .sort(function(a,b){return new Date(b.createdAt)-new Date(a.createdAt);}).slice(0,5);
   document.getElementById('dashOpenCapas').innerHTML = openCapas.length === 0
     ? '<div class="py-8 text-center text-slate-400 text-sm">No open CAPAs</div>'
     : miniCapaTable(openCapas);
 }
 
 function sc(label,val,cls) {
-  return `<div class="bg-white rounded-xl border border-slate-200 p-5">
-    <p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">${label}</p>
-    <p class="text-3xl font-bold ${cls}">${val}</p></div>`;
+  return '<div class="bg-white rounded-xl border border-slate-200 p-5"><p class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">'+label+'</p><p class="text-3xl font-bold '+cls+'">'+val+'</p></div>';
 }
 
 function miniDevTable(rows) {
-  return `<table class="w-full text-sm"><thead class="bg-slate-50"><tr>
-    <th class="text-left px-6 py-2.5 text-xs text-slate-500 font-semibold">ID</th>
-    <th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Title</th>
-    <th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Status</th>
-    <th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Owner</th>
-    </tr></thead>
-    <tbody class="divide-y divide-slate-100">
-    ${rows.map(d=>`<tr class="cursor-pointer" onclick="viewDev('${esc(d.id)}')">
-      <td class="px-6 py-3 font-mono text-xs font-bold text-blue-600">${esc(d.id)}</td>
-      <td class="px-4 py-3 text-slate-900 font-medium">${esc(d.title)}</td>
-      <td class="px-4 py-3">${stBadge(d.status)}</td>
-      <td class="px-4 py-3 text-slate-500 text-xs">${esc(d.owner)||'—'}</td>
-      </tr>`).join('')}
-    </tbody></table>`;
+  return '<table class="w-full text-sm"><thead class="bg-slate-50"><tr>'+
+    '<th class="text-left px-6 py-2.5 text-xs text-slate-500 font-semibold">ID</th>'+
+    '<th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Title</th>'+
+    '<th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Status</th>'+
+    '<th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Owner</th>'+
+    '</tr></thead><tbody class="divide-y divide-slate-100">'+
+    rows.map(function(d){return '<tr class="cursor-pointer" onclick="viewDev(\''+esc(d.id)+'\')">'+
+      '<td class="px-6 py-3 font-mono text-xs font-bold text-blue-600">'+esc(d.id)+'</td>'+
+      '<td class="px-4 py-3 text-slate-900 font-medium">'+esc(d.title)+'</td>'+
+      '<td class="px-4 py-3">'+stBadge(d.status)+'</td>'+
+      '<td class="px-4 py-3 text-slate-500 text-xs">'+esc(d.owner||'—')+'</td></tr>';}).join('')+
+    '</tbody></table>';
 }
 
 function miniCapaTable(rows) {
-  return `<table class="w-full text-sm"><thead class="bg-slate-50"><tr>
-    <th class="text-left px-6 py-2.5 text-xs text-slate-500 font-semibold">ID</th>
-    <th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Related Deviation</th>
-    <th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Status</th>
-    </tr></thead>
-    <tbody class="divide-y divide-slate-100">
-    ${rows.map(c=>`<tr>
-      <td class="px-6 py-3 font-mono text-xs font-bold text-blue-600">${esc(c.id)}</td>
-      <td class="px-4 py-3 text-slate-700 text-xs font-mono">${esc(c.relatedDeviation)||'—'}</td>
-      <td class="px-4 py-3">${capaStBadge(c.status)}</td>
-      </tr>`).join('')}
-    </tbody></table>`;
+  return '<table class="w-full text-sm"><thead class="bg-slate-50"><tr>'+
+    '<th class="text-left px-6 py-2.5 text-xs text-slate-500 font-semibold">ID</th>'+
+    '<th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Related Deviation</th>'+
+    '<th class="text-left px-4 py-2.5 text-xs text-slate-500 font-semibold">Status</th>'+
+    '</tr></thead><tbody class="divide-y divide-slate-100">'+
+    rows.map(function(c){return '<tr>'+
+      '<td class="px-6 py-3 font-mono text-xs font-bold text-blue-600">'+esc(c.id)+'</td>'+
+      '<td class="px-4 py-3 text-slate-700 text-xs font-mono">'+(esc(c.relatedDeviation)||'—')+'</td>'+
+      '<td class="px-4 py-3">'+capaStBadge(c.status)+'</td></tr>';}).join('')+
+    '</tbody></table>';
 }
 
-/* ───────────────────────────────
-   DEVIATIONS — TABLE
-─────────────────────────────── */
+/* DEVIATIONS TABLE */
 function renderDevTable() {
-  const fState    = document.getElementById('devFltState')?.value   || '';
-  const fStatus   = document.getElementById('devFltStatus')?.value  || '';
-  const fSeverity = document.getElementById('devFltSeverity')?.value || '';
-  const fSearch   = (document.getElementById('devSearch')?.value||'').toLowerCase();
-
-  let rows = [...db.deviations].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
-  if (fState === 'open')   rows = rows.filter(d=>d.status!=='Closed');
-  if (fState === 'closed') rows = rows.filter(d=>d.status==='Closed');
-  if (fStatus)   rows = rows.filter(d=>d.status===fStatus);
-  if (fSeverity) rows = rows.filter(d=>d.severity===fSeverity);
-  if (fSearch)   rows = rows.filter(d=>
-    d.id.toLowerCase().includes(fSearch)||
-    d.title.toLowerCase().includes(fSearch)||
-    (d.limsSampleIds||[]).some(s=>s.toLowerCase().includes(fSearch))||
-    (d.limsOrderIds||[]).some(s=>s.toLowerCase().includes(fSearch))||
-    (d.owner||'').toLowerCase().includes(fSearch)
-  );
-
-  const tbody = document.getElementById('devTableBody');
-  const empty = document.getElementById('devEmpty');
+  var fState = document.getElementById('devFltState')?.value || '';
+  var fStatus = document.getElementById('devFltStatus')?.value || '';
+  var fSeverity = document.getElementById('devFltSeverity')?.value || '';
+  var fSearch = (document.getElementById('devSearch')?.value||'').toLowerCase();
+  var rows = db.deviations.slice().sort(function(a,b){return new Date(b.createdAt)-new Date(a.createdAt);});
+  if (fState==='open') rows=rows.filter(function(d){return d.status!=='Closed';});
+  if (fState==='closed') rows=rows.filter(function(d){return d.status==='Closed';});
+  if (fStatus) rows=rows.filter(function(d){return d.status===fStatus;});
+  if (fSeverity) rows=rows.filter(function(d){return d.severity===fSeverity;});
+  if (fSearch) rows=rows.filter(function(d){
+    return d.id.toLowerCase().includes(fSearch)||d.title.toLowerCase().includes(fSearch)||
+      (d.limsSampleIds||[]).some(function(s){return s.toLowerCase().includes(fSearch);})||
+      (d.limsOrderIds||[]).some(function(s){return s.toLowerCase().includes(fSearch);})||
+      (d.owner||'').toLowerCase().includes(fSearch);
+  });
+  var tbody = document.getElementById('devTableBody');
+  var empty = document.getElementById('devEmpty');
   if (rows.length===0){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
-
-  tbody.innerHTML = rows.map(d=>`
-    <tr class="cursor-pointer" onclick="viewDev('${esc(d.id)}')">
-      <td class="px-6 py-3.5 font-mono text-xs font-bold text-blue-600 whitespace-nowrap">${esc(d.id)}</td>
-      <td class="px-4 py-3.5 text-slate-900 font-medium max-w-xs truncate">${esc(d.title)}</td>
-      <td class="px-4 py-3.5 whitespace-nowrap">${stBadge(d.status)}</td>
-      <td class="px-4 py-3.5 whitespace-nowrap">${sevBadge(d.severity)||'<span class="text-slate-400 text-xs">—</span>'}</td>
-      <td class="px-4 py-3.5 text-slate-600 text-xs whitespace-nowrap">${esc(d.owner)||'<span class="text-slate-400">—</span>'}</td>
-      <td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">${d.dueDate?fmtDate(d.dueDate+'T12:00:00'):'<span class="text-slate-400">—</span>'}</td>
-      <td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">${fmtDate(d.createdAt)}</td>
-      <td class="px-4 py-3.5 text-right whitespace-nowrap">
-        <button onclick="event.stopPropagation();openDevForm('${esc(d.id)}')"
-          class="text-xs text-slate-500 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-50 transition-colors">Edit</button>
-      </td>
-    </tr>`).join('');
+  tbody.innerHTML = rows.map(function(d){return '<tr class="cursor-pointer" onclick="viewDev(\''+esc(d.id)+'\')">'+
+    '<td class="px-6 py-3.5 font-mono text-xs font-bold text-blue-600 whitespace-nowrap">'+esc(d.id)+'</td>'+
+    '<td class="px-4 py-3.5 text-slate-900 font-medium max-w-xs truncate">'+esc(d.title)+'</td>'+
+    '<td class="px-4 py-3.5 whitespace-nowrap">'+stBadge(d.status)+'</td>'+
+    '<td class="px-4 py-3.5 whitespace-nowrap">'+(sevBadge(d.severity)||'<span class="text-slate-400 text-xs">\u2014</span>')+'</td>'+
+    '<td class="px-4 py-3.5 text-slate-600 text-xs whitespace-nowrap">'+(esc(d.owner)||'<span class="text-slate-400">\u2014</span>')+'</td>'+
+    '<td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">'+(d.dueDate?fmtDate(d.dueDate+'T12:00:00'):'<span class="text-slate-400">\u2014</span>')+'</td>'+
+    '<td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">'+fmtDate(d.createdAt)+'</td>'+
+    '<td class="px-4 py-3.5 text-right whitespace-nowrap"><button type="button" onclick="event.stopPropagation();openDevForm(\''+esc(d.id)+'\')" class="text-xs text-slate-500 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-50 transition-colors">Edit</button></td></tr>';}).join('');
 }
 
-/* ───────────────────────────────
-   DEVIATIONS — FORM
-─────────────────────────────── */
+/* DEVIATIONS FORM */
 function openDevForm(editId) {
-  const isEdit = !!editId;
+  var isEdit = !!editId;
   document.getElementById('devFormEditId').value = editId||'';
   document.getElementById('devFormHeading').textContent = isEdit ? 'Edit Deviation' : 'New Deviation';
-
   if (isEdit) {
-    const d = db.deviations.find(x=>x.id===editId);
+    var d = db.deviations.find(function(x){return x.id===editId;});
     if (!d) return;
     document.getElementById('devFormSub').textContent = d.id;
-    document.getElementById('devFTitle').value     = d.title||'';
-    document.getElementById('devFDesc').value      = d.description||'';
+    document.getElementById('devFTitle').value = d.title||'';
+    document.getElementById('devFDesc').value = d.description||'';
     document.getElementById('devFImmediate').value = d.immediateAction||'';
-    document.getElementById('devFSop').value       = d.deviatedSop||'';
-    document.getElementById('devFOwner').value     = d.owner||'';
-    document.getElementById('devFDue').value       = d.dueDate||'';
-    formTags.sampleIds = [...(d.limsSampleIds||[])];
-    formTags.orderIds  = [...(d.limsOrderIds||[])];
+    document.getElementById('devFSop').value = d.deviatedSop||'';
+    document.getElementById('devFOwner').value = d.owner||'';
+    document.getElementById('devFDue').value = d.dueDate||'';
+    formTags.sampleIds = (d.limsSampleIds||[]).slice();
+    formTags.orderIds = (d.limsOrderIds||[]).slice();
   } else {
     document.getElementById('devFormSub').textContent = 'ID will be assigned on save';
-    ['devFTitle','devFDesc','devFImmediate','devFSop','devFOwner','devFDue'].forEach(id=>document.getElementById(id).value='');
+    ['devFTitle','devFDesc','devFImmediate','devFSop','devFOwner','devFDue'].forEach(function(id){document.getElementById(id).value='';});
     formTags.sampleIds = [];
-    formTags.orderIds  = [];
+    formTags.orderIds = [];
     document.getElementById('sampleTagInput').value = '';
-    document.getElementById('orderTagInput').value  = '';
+    document.getElementById('orderTagInput').value = '';
   }
-
   renderTagDisplay('sampleIds');
   renderTagDisplay('orderIds');
   document.getElementById('devFormModal').classList.remove('hidden');
-  // flush any open detail first
   closeModal('devDetailModal');
-  setTimeout(()=>document.getElementById('devFTitle').focus(),60);
+  setTimeout(function(){document.getElementById('devFTitle').focus();},60);
 }
 
+/* BUG FIX 1: saveDev now reliably closes modal and navigates */
 function saveDev(action) {
-  const title = document.getElementById('devFTitle').value.trim();
+  var title = document.getElementById('devFTitle').value.trim();
   if (!title) { toast('Title is required', true); return; }
-
-  // flush any pending tag input
-  ['sampleTagInput','orderTagInput'].forEach((inputId,i) => {
-    const key = i===0?'sampleIds':'orderIds';
-    const val = document.getElementById(inputId).value.trim().replace(/,/g,'');
+  // flush pending tag input
+  ['sampleTagInput','orderTagInput'].forEach(function(inputId,i){
+    var key = i===0?'sampleIds':'orderIds';
+    var val = document.getElementById(inputId).value.trim().replace(/,/g,'');
     if (val && !formTags[key].includes(val)) { formTags[key].push(val); document.getElementById(inputId).value=''; }
   });
-
-  const editId = document.getElementById('devFormEditId').value;
-  const now = new Date().toISOString();
-  const patch = {
-    title,
-    description:    document.getElementById('devFDesc').value,
-    immediateAction:document.getElementById('devFImmediate').value,
-    deviatedSop:    document.getElementById('devFSop').value,
-    limsSampleIds:  [...formTags.sampleIds],
-    limsOrderIds:   [...formTags.orderIds],
-    owner:          document.getElementById('devFOwner').value,
-    dueDate:        document.getElementById('devFDue').value,
+  var editId = document.getElementById('devFormEditId').value;
+  var now = new Date().toISOString();
+  var patch = {
+    title: title,
+    description: document.getElementById('devFDesc').value,
+    immediateAction: document.getElementById('devFImmediate').value,
+    deviatedSop: document.getElementById('devFSop').value,
+    limsSampleIds: formTags.sampleIds.slice(),
+    limsOrderIds: formTags.orderIds.slice(),
+    owner: document.getElementById('devFOwner').value,
+    dueDate: document.getElementById('devFDue').value,
   };
-
   if (editId) {
-    const idx = db.deviations.findIndex(d=>d.id===editId);
+    var idx = db.deviations.findIndex(function(d){return d.id===editId;});
     if (idx===-1) return;
-    const old = db.deviations[idx];
-    const changes = diffFields(old, patch, Object.keys(patch));
-    db.deviations[idx] = { ...old, ...patch, updatedAt:now, updatedBy:currentUser,
-      auditLog:[...(old.auditLog||[]), auditEntry('Updated', changes)] };
+    var old = db.deviations[idx];
+    var changes = diffFields(old, patch, Object.keys(patch));
+    db.deviations[idx] = Object.assign({}, old, patch, {updatedAt:now, updatedBy:currentUser,
+      auditLog:(old.auditLog||[]).concat([auditEntry('Updated', changes)])});
     toast('Deviation updated');
   } else {
-    const newStatus = action === 'submit' ? 'Submitted' : 'Draft';
-    const id = genDev();
-    db.deviations.push({ id, ...patch, status: newStatus,
+    var newStatus = action === 'submit' ? 'Submitted' : 'Draft';
+    var id = genDev();
+    db.deviations.push({id:id, title:patch.title, description:patch.description,
+      immediateAction:patch.immediateAction, deviatedSop:patch.deviatedSop,
+      limsSampleIds:patch.limsSampleIds, limsOrderIds:patch.limsOrderIds,
+      owner:patch.owner, dueDate:patch.dueDate, status:newStatus,
       severity:'', assignedInvestigator:'', rootCause:'', riskAssessment:'',
       decisionNotes:'', capaRequired:null, linkedCapaId:'',
       capaActions:'', effectivenessCheck:'', closingNotes:'',
       createdAt:now, createdBy:currentUser, updatedAt:now, updatedBy:currentUser,
-      auditLog:[auditEntry(action === 'submit' ? 'Created & Submitted' : 'Created as Draft')] });
+      auditLog:[auditEntry(action === 'submit' ? 'Created & Submitted' : 'Created as Draft')]});
     toast(id + (action === 'submit' ? ' submitted for QA Review' : ' saved as draft'));
   }
-
   saveDb();
   closeModal('devFormModal');
-  showView('deviations');
   updateBadges();
+  showView('deviations');
 }
 
-/* ───────────────────────────────
-   DEVIATIONS — DETAIL
-─────────────────────────────── */
+/* DEVIATIONS DETAIL */
 function viewDev(id) {
-  const d = db.deviations.find(x=>x.id===id);
+  var d = db.deviations.find(function(x){return x.id===id;});
   if (!d) return;
   activeDetailId = id;
   closeModal('devFormModal');
-
   document.getElementById('ddId').textContent = d.id;
-  document.getElementById('ddStateBadge').innerHTML   = stateBadge(d.status);
-  document.getElementById('ddStatusBadge').innerHTML  = stBadge(d.status);
-  document.getElementById('ddSevBadge').innerHTML     = sevBadge(d.severity);
-  document.getElementById('ddActionBar').innerHTML    = buildActionBar(id);
+  document.getElementById('ddStateBadge').innerHTML = stateBadge(d.status);
+  document.getElementById('ddStatusBadge').innerHTML = stBadge(d.status);
+  document.getElementById('ddSevBadge').innerHTML = sevBadge(d.severity);
+  document.getElementById('ddActionBar').innerHTML = buildActionBar(id);
 
   // Info tab
-  document.getElementById('ddInfoGrid').innerHTML = `
-    <div class="col-span-2">
-      <p class="fl">Title</p>
-      <p class="text-slate-900 font-medium text-base">${esc(d.title)}</p>
-    </div>
-    ${d.description?`<div class="col-span-2"><p class="fl">Description</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.description)}</p></div>`:''}
-    ${d.immediateAction?`<div class="col-span-2"><p class="fl">Immediate Action Taken</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.immediateAction)}</p></div>`:''}
-    ${d.deviatedSop?`<div class="col-span-2"><p class="fl">Deviated SOP</p><p class="text-slate-700 text-sm font-mono">${esc(d.deviatedSop)}</p></div>`:''}
-    <div><p class="fl">LIMS Sample IDs</p>${tagsHtml(d.limsSampleIds)}</div>
-    <div><p class="fl">LIMS Order IDs</p>${tagsHtml(d.limsOrderIds)}</div>
-    <div><p class="fl">Owner</p><p class="text-slate-700 text-sm">${esc(d.owner)||'<span class="text-slate-400">—</span>'}</p></div>
-    <div><p class="fl">Due Date</p><p class="text-slate-700 text-sm">${d.dueDate?fmtDate(d.dueDate+'T12:00:00'):'<span class="text-slate-400">—</span>'}</p></div>
-    <div class="col-span-2 border-t border-slate-100 pt-4 grid grid-cols-2 gap-4">
-      <div><p class="fl">Created</p><p class="text-slate-700 text-sm">${fmtDT(d.createdAt)}</p><p class="text-slate-400 text-xs mt-0.5">by ${esc(d.createdBy)}</p></div>
-      <div><p class="fl">Last Modified</p><p class="text-slate-700 text-sm">${fmtDT(d.updatedAt)}</p><p class="text-slate-400 text-xs mt-0.5">by ${esc(d.updatedBy)}</p></div>
-    </div>
-  `;
+  document.getElementById('ddInfoGrid').innerHTML =
+    '<div class="col-span-2"><p class="fl">Title</p><p class="text-slate-900 font-medium text-base">'+esc(d.title)+'</p></div>'+
+    (d.description?'<div class="col-span-2"><p class="fl">Description</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.description)+'</p></div>':'')+
+    (d.immediateAction?'<div class="col-span-2"><p class="fl">Immediate Action Taken</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.immediateAction)+'</p></div>':'')+
+    (d.deviatedSop?'<div class="col-span-2"><p class="fl">Deviated SOP</p><p class="text-slate-700 text-sm font-mono">'+esc(d.deviatedSop)+'</p></div>':'')+
+    '<div><p class="fl">LIMS Sample IDs</p>'+tagsHtml(d.limsSampleIds)+'</div>'+
+    '<div><p class="fl">LIMS Order IDs</p>'+tagsHtml(d.limsOrderIds)+'</div>'+
+    '<div><p class="fl">Owner</p><p class="text-slate-700 text-sm">'+(esc(d.owner)||'<span class="text-slate-400">\u2014</span>')+'</p></div>'+
+    '<div><p class="fl">Due Date</p><p class="text-slate-700 text-sm">'+(d.dueDate?fmtDate(d.dueDate+'T12:00:00'):'<span class="text-slate-400">\u2014</span>')+'</p></div>'+
+    '<div class="col-span-2 border-t border-slate-100 pt-4 grid grid-cols-2 gap-4">'+
+      '<div><p class="fl">Created</p><p class="text-slate-700 text-sm">'+fmtDT(d.createdAt)+'</p><p class="text-slate-400 text-xs mt-0.5">by '+esc(d.createdBy)+'</p></div>'+
+      '<div><p class="fl">Last Modified</p><p class="text-slate-700 text-sm">'+fmtDT(d.updatedAt)+'</p><p class="text-slate-400 text-xs mt-0.5">by '+esc(d.updatedBy)+'</p></div>'+
+    '</div>';
 
-  // Investigation tab
-  const invStage = ['Under QA Review','Investigation In Progress','Investigation Completed',
-    'CAPA Open','CAPA In Progress','CAPA Verification','Ready to Close','Closed'].includes(d.status);
-  document.getElementById('ddInvestGrid').innerHTML = !invStage
-    ? '<div class="text-center py-12"><p class="text-slate-400 text-sm">Investigation fields will appear once QA accepts and assigns this deviation.</p></div>'
-    : `<div class="grid grid-cols-2 gap-6">
-        <div><p class="fl">Severity Classification</p>${d.severity?sevBadge(d.severity):'<span class="text-slate-400 text-sm">Not yet classified</span>'}</div>
-        <div><p class="fl">Assigned Investigator</p><p class="text-slate-700 text-sm">${esc(d.assignedInvestigator)||'<span class="text-slate-400">Not yet assigned</span>'}</p></div>
-        ${d.rootCause?`<div class="col-span-2"><p class="fl">Root Cause Analysis</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.rootCause)}</p></div>`:'<div class="col-span-2"><p class="fl">Root Cause Analysis</p><p class="text-slate-400 text-sm">Pending investigation…</p></div>'}
-        ${d.riskAssessment?`<div class="col-span-2"><p class="fl">Risk Assessment</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.riskAssessment)}</p></div>`:''}
-      </div>`;
+  // Investigation tab — CHANGE 4: Root Cause editable by Investigator/QA Lead
+  var invStage = ['Under QA Review','Investigation In Progress','Investigation Completed',
+    'CAPA Open','CAPA In Progress','CAPA Verification','Ready to Close','Closed'].indexOf(d.status) !== -1;
+  var canEditRCA = (currentRole === 'Investigator' || currentRole === 'QA Lead') &&
+    ['Investigation In Progress','Investigation Completed','CAPA Open','CAPA In Progress','CAPA Verification','Ready to Close'].indexOf(d.status) !== -1;
+
+  if (!invStage) {
+    document.getElementById('ddInvestGrid').innerHTML = '<div class="text-center py-12"><p class="text-slate-400 text-sm">Investigation fields will appear once QA accepts and assigns this deviation.</p></div>';
+  } else {
+    var rcaHtml;
+    if (canEditRCA) {
+      rcaHtml = '<div class="col-span-2"><p class="fl">Root Cause Analysis</p>'+
+        '<textarea id="rcaEditField" rows="6" class="field w-full" placeholder="Document root cause findings (5-Why, Fishbone, FMEA, etc.)…" onblur="saveRCA()">'+esc(d.rootCause)+'</textarea>'+
+        '<p class="text-xs text-slate-400 mt-1">Auto-saves when you click away</p></div>';
+    } else if (d.rootCause) {
+      rcaHtml = '<div class="col-span-2"><p class="fl">Root Cause Analysis</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.rootCause)+'</p></div>';
+    } else {
+      rcaHtml = '<div class="col-span-2"><p class="fl">Root Cause Analysis</p><p class="text-slate-400 text-sm">Pending investigation\u2026</p></div>';
+    }
+    document.getElementById('ddInvestGrid').innerHTML = '<div class="grid grid-cols-2 gap-6">'+
+      '<div><p class="fl">Severity Classification</p>'+(d.severity?sevBadge(d.severity):'<span class="text-slate-400 text-sm">Not yet classified</span>')+'</div>'+
+      '<div><p class="fl">Assigned Investigator</p><p class="text-slate-700 text-sm">'+(esc(d.assignedInvestigator)||'<span class="text-slate-400">Not yet assigned</span>')+'</p></div>'+
+      rcaHtml+
+      (d.riskAssessment?'<div class="col-span-2"><p class="fl">Risk Assessment</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.riskAssessment)+'</p></div>':'')+
+    '</div>';
+  }
 
   // Decision & CAPA tab
-  const decStage = ['Investigation Completed','CAPA Open','CAPA In Progress','CAPA Verification','Ready to Close','Closed'].includes(d.status);
-  const linkedCapa = d.linkedCapaId ? db.capas.find(c=>c.id===d.linkedCapaId) : null;
-  document.getElementById('ddCapaContent').innerHTML = !decStage
-    ? '<div class="text-center py-12"><p class="text-slate-400 text-sm">Decision and CAPA fields will appear once investigation is complete.</p></div>'
-    : `<div class="space-y-5">
-        ${d.decisionNotes?`<div><p class="fl">QA Decision Notes</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.decisionNotes)}</p></div>`:''}
-        ${d.capaRequired===true?`<div class="inline-flex items-center space-x-2 bg-orange-50 border border-orange-200 rounded-lg px-4 py-2"><span class="w-2 h-2 rounded-full bg-orange-500"></span><span class="text-sm font-medium text-orange-800">CAPA Required</span></div>`:''}
-        ${d.capaRequired===false?`<div class="inline-flex items-center space-x-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="text-sm font-medium text-green-800">No CAPA Required</span></div>`:''}
-        ${linkedCapa?`<div class="bg-slate-50 border border-slate-200 rounded-xl p-5">
-          <div class="flex items-center justify-between mb-3">
-            <span class="font-mono text-sm font-bold text-blue-600">${esc(linkedCapa.id)}</span>
-            ${capaStBadge(linkedCapa.status)}
-          </div>
-          ${linkedCapa.actions?`<p class="fl">Actions</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(linkedCapa.actions)}</p>`:''}
-          ${linkedCapa.effectiveness?`<div class="mt-3"><p class="fl">Effectiveness Check</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(linkedCapa.effectiveness)}</p></div>`:''}
-        </div>`:''}
-        ${d.effectivenessCheck?`<div><p class="fl">Effectiveness Check</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.effectivenessCheck)}</p></div>`:''}
-        ${d.closingNotes?`<div><p class="fl">Closing Notes</p><p class="text-slate-700 text-sm whitespace-pre-wrap">${esc(d.closingNotes)}</p></div>`:''}
-      </div>`;
+  var decStage = ['Investigation Completed','CAPA Open','CAPA In Progress','CAPA Verification','Ready to Close','Closed'].indexOf(d.status) !== -1;
+  var linkedCapa = d.linkedCapaId ? db.capas.find(function(c){return c.id===d.linkedCapaId;}) : null;
+  if (!decStage) {
+    document.getElementById('ddCapaContent').innerHTML = '<div class="text-center py-12"><p class="text-slate-400 text-sm">Decision and CAPA fields will appear once investigation is complete.</p></div>';
+  } else {
+    document.getElementById('ddCapaContent').innerHTML = '<div class="space-y-5">'+
+      (d.decisionNotes?'<div><p class="fl">QA Decision Notes</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.decisionNotes)+'</p></div>':'')+
+      (d.capaRequired===true?'<div class="inline-flex items-center space-x-2 bg-orange-50 border border-orange-200 rounded-lg px-4 py-2"><span class="w-2 h-2 rounded-full bg-orange-500"></span><span class="text-sm font-medium text-orange-800">CAPA Required</span></div>':'')+
+      (d.capaRequired===false?'<div class="inline-flex items-center space-x-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2"><span class="w-2 h-2 rounded-full bg-green-500"></span><span class="text-sm font-medium text-green-800">No CAPA Required</span></div>':'')+
+      (linkedCapa?'<div class="bg-slate-50 border border-slate-200 rounded-xl p-5"><div class="flex items-center justify-between mb-3"><span class="font-mono text-sm font-bold text-blue-600">'+esc(linkedCapa.id)+'</span>'+capaStBadge(linkedCapa.status)+'</div>'+
+        (linkedCapa.actions?'<p class="fl">Actions</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(linkedCapa.actions)+'</p>':'')+
+        (linkedCapa.effectiveness?'<div class="mt-3"><p class="fl">Effectiveness Check</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(linkedCapa.effectiveness)+'</p></div>':'')+'</div>':'')+
+      (d.effectivenessCheck?'<div><p class="fl">Effectiveness Check</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.effectivenessCheck)+'</p></div>':'')+
+      (d.closingNotes?'<div><p class="fl">Closing Notes</p><p class="text-slate-700 text-sm whitespace-pre-wrap">'+esc(d.closingNotes)+'</p></div>':'')+
+    '</div>';
+  }
 
   // Audit log
-  const log = [...(d.auditLog||[])].reverse();
+  var log = (d.auditLog||[]).slice().reverse();
   document.getElementById('ddAuditLog').innerHTML = log.length===0
     ? '<p class="text-slate-400 text-sm">No audit entries yet</p>'
-    : log.map((e,i)=>`
-      <div class="${i>0?'pt-4 mt-4 border-t border-slate-100':''} flex space-x-3">
-        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-          <span class="text-blue-700 text-xs font-bold">${(e.user||'?').charAt(0).toUpperCase()}</span>
-        </div>
-        <div class="flex-1">
-          <div class="flex items-baseline flex-wrap gap-x-2">
-            <span class="text-sm font-semibold text-slate-900">${esc(e.user)}</span>
-            <span class="text-xs text-slate-400 italic">${esc(e.role||'')}</span>
-            <span class="text-xs text-slate-400">${fmtDT(e.ts)}</span>
-          </div>
-          <p class="text-sm text-slate-600 mt-0.5">${esc(e.action)}</p>
-          ${Object.keys(e.changes||{}).length>0?`
-            <div class="mt-2 space-y-1">
-              ${Object.entries(e.changes).map(([f,c])=>`
-                <div class="text-xs text-slate-500">
-                  <span class="font-medium text-slate-700">${esc(f)}</span>:
-                  <span class="line-through text-red-400 mx-1">${esc(Array.isArray(c.from)?c.from.join(', '):String(c.from))||'(empty)'}</span>→
-                  <span class="text-green-600 ml-1">${esc(Array.isArray(c.to)?c.to.join(', '):String(c.to))||'(empty)'}</span>
-                </div>`).join('')}
-            </div>`:''}
-        </div>
-      </div>`).join('');
+    : log.map(function(e,i){return '<div class="'+(i>0?'pt-4 mt-4 border-t border-slate-100':'')+' flex space-x-3">'+
+        '<div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-blue-700 text-xs font-bold">'+(e.user||'?').charAt(0).toUpperCase()+'</span></div>'+
+        '<div class="flex-1"><div class="flex items-baseline flex-wrap gap-x-2">'+
+          '<span class="text-sm font-semibold text-slate-900">'+esc(e.user)+'</span>'+
+          '<span class="text-xs text-slate-400 italic">'+esc(e.role||'')+'</span>'+
+          '<span class="text-xs text-slate-400">'+fmtDT(e.ts)+'</span></div>'+
+          '<p class="text-sm text-slate-600 mt-0.5">'+esc(e.action)+'</p>'+
+          (Object.keys(e.changes||{}).length>0?'<div class="mt-2 space-y-1">'+
+            Object.entries(e.changes).map(function(pair){var f=pair[0],c=pair[1];
+              return '<div class="text-xs text-slate-500"><span class="font-medium text-slate-700">'+esc(f)+'</span>: '+
+                '<span class="line-through text-red-400 mx-1">'+(esc(Array.isArray(c.from)?c.from.join(', '):String(c.from))||'(empty)')+'</span>\u2192 '+
+                '<span class="text-green-600 ml-1">'+(esc(Array.isArray(c.to)?c.to.join(', '):String(c.to))||'(empty)')+'</span></div>';}).join('')+'</div>':'')+
+        '</div></div>';}).join('');
 
   showDTab('info');
   document.getElementById('devDetailModal').classList.remove('hidden');
 }
 
+/* CHANGE 4: Save Root Cause inline edits */
+function saveRCA() {
+  if (!activeDetailId) return;
+  var el = document.getElementById('rcaEditField');
+  if (!el) return;
+  var idx = db.deviations.findIndex(function(d){return d.id===activeDetailId;});
+  if (idx===-1) return;
+  var dev = db.deviations[idx];
+  var newVal = el.value.trim();
+  if (newVal === (dev.rootCause||'')) return; // no change
+  var changes = {rootCause:{from:dev.rootCause||'',to:newVal}};
+  db.deviations[idx] = Object.assign({}, dev, {rootCause:newVal, updatedAt:new Date().toISOString(), updatedBy:currentUser,
+    auditLog:(dev.auditLog||[]).concat([auditEntry('Root Cause Updated', changes)])});
+  saveDb();
+  toast('Root cause analysis saved');
+}
+
 function showDTab(tab) {
-  ['info','invest','capa','audit'].forEach(t=>{
-    const btn  = document.getElementById('dtab-'+t);
-    const body = document.getElementById('dtab-'+t+'-c');
-    const active = t===tab;
+  ['info','invest','capa','audit'].forEach(function(t){
+    var btn = document.getElementById('dtab-'+t);
+    var body = document.getElementById('dtab-'+t+'-c');
+    var active = t===tab;
     btn.classList.toggle('border-blue-600',active);
     btn.classList.toggle('text-blue-600',active);
     btn.classList.toggle('border-transparent',!active);
@@ -1246,207 +1137,187 @@ function showDTab(tab) {
 }
 
 function buildActionBar(devId) {
-  const d = db.deviations.find(x=>x.id===devId);
+  var d = db.deviations.find(function(x){return x.id===devId;});
   if (!d || d.status==='Closed') {
-    return `<span class="text-xs text-slate-400 italic">This deviation is closed. No further actions available.</span>`;
+    return '<span class="text-xs text-slate-400 italic">This deviation is closed. No further actions available.</span>';
   }
-  const available = (TRANSITIONS[d.status]||[]).filter(t=>t.roles.includes(currentRole));
+  var available = (TRANSITIONS[d.status]||[]).filter(function(t){return t.roles.indexOf(currentRole)!==-1;});
   if (available.length===0) {
-    return `<span class="text-xs text-slate-400 italic">No actions available for your role (<strong class="text-slate-600">${esc(currentRole)}</strong>) at this stage.</span>`;
+    return '<span class="text-xs text-slate-400 italic">No actions available for your role (<strong class="text-slate-600">'+esc(currentRole)+'</strong>) at this stage.</span>';
   }
-  return available.map(t=>`
-    <button onclick="initiateTransition('${esc(devId)}','${esc(t.id)}')"
-      class="px-4 py-2 text-white text-xs font-semibold rounded-lg transition-colors ${t.color}">
-      ${t.label}
-    </button>`).join('') +
-    `<span class="text-xs text-slate-400 ml-2">Acting as: <strong class="text-slate-600">${esc(currentRole)}</strong></span>`;
+  return available.map(function(t){return '<button type="button" onclick="initiateTransition(\''+esc(devId)+'\',\''+esc(t.id)+'\')" class="px-4 py-2 text-white text-xs font-semibold rounded-lg transition-colors '+t.color+'">'+t.label+'</button>';}).join('')+
+    '<span class="text-xs text-slate-400 ml-2">Acting as: <strong class="text-slate-600">'+esc(currentRole)+'</strong></span>';
 }
 
-/* ───────────────────────────────
-   WORKFLOW TRANSITIONS
-─────────────────────────────── */
+/* WORKFLOW TRANSITIONS */
 function initiateTransition(devId, transId) {
-  const d = db.deviations.find(x=>x.id===devId);
+  var d = db.deviations.find(function(x){return x.id===devId;});
   if (!d) return;
-  const allTrans = TRANSITIONS[d.status]||[];
-  const t = allTrans.find(x=>x.id===transId);
+  var allTrans = TRANSITIONS[d.status]||[];
+  var t = allTrans.find(function(x){return x.id===transId;});
   if (!t) return;
+  pendingTransition = Object.assign({devId:devId}, t);
 
-  pendingTransition = { devId, ...t };
-
-  document.getElementById('transTitle').innerHTML = t.label;
-  document.getElementById('transSub').textContent = 'Status: ' + d.status + ' → ' + t.next;
-
-  const fc = document.getElementById('transFields');
+  // If no fields, skip the modal and execute immediately (BUG FIX 2)
   if (!t.fields || t.fields.length===0) {
-    fc.innerHTML = `<p class="text-slate-600 text-sm">Confirm to proceed: <strong>${t.label}</strong></p>`;
-  } else {
-    fc.innerHTML = t.fields.map(f=>{
-      if (f.type==='select') return `<div>
-        <label class="lbl">${f.label}${f.required?' <span class="text-red-500">*</span>':''}</label>
-        <select id="tf_${f.id}" class="field"><option value="">Select…</option>${(f.options||[]).map(o=>`<option>${o}</option>`).join('')}</select></div>`;
-      if (f.type==='textarea') return `<div>
-        <label class="lbl">${f.label}${f.required?' <span class="text-red-500">*</span>':''}</label>
-        <textarea id="tf_${f.id}" rows="3" class="field" placeholder="${f.placeholder||''}"></textarea></div>`;
-      return `<div>
-        <label class="lbl">${f.label}${f.required?' <span class="text-red-500">*</span>':''}</label>
-        <input type="text" id="tf_${f.id}" class="field" placeholder="${f.placeholder||''}"></div>`;
-    }).join('');
+    pendingTransition = Object.assign({devId:devId}, t);
+    doExecuteTransition();
+    return;
   }
 
-  const btn = document.getElementById('transConfirmBtn');
-  btn.className = `px-5 py-2 text-white text-sm font-semibold rounded-lg transition-colors ${t.color}`;
-  btn.innerHTML = t.label;
-
+  document.getElementById('transTitle').innerHTML = t.label;
+  document.getElementById('transSub').textContent = 'Status: ' + d.status + ' \u2192 ' + t.next;
+  var fc = document.getElementById('transFields');
+  fc.innerHTML = t.fields.map(function(f){
+    var rowsAttr = f.rows || 3;
+    if (f.type==='select') return '<div><label class="lbl">'+f.label+(f.required?' <span class="text-red-500">*</span>':'')+'</label>'+
+      '<select id="tf_'+f.id+'" class="field"><option value="">Select\u2026</option>'+(f.options||[]).map(function(o){return '<option>'+o+'</option>';}).join('')+'</select></div>';
+    if (f.type==='textarea') return '<div><label class="lbl">'+f.label+(f.required?' <span class="text-red-500">*</span>':'')+'</label>'+
+      '<textarea id="tf_'+f.id+'" rows="'+rowsAttr+'" class="field" placeholder="'+(f.placeholder||'')+'"></textarea></div>';
+    return '<div><label class="lbl">'+f.label+(f.required?' <span class="text-red-500">*</span>':'')+'</label>'+
+      '<input type="text" id="tf_'+f.id+'" class="field" placeholder="'+(f.placeholder||'')+'"></div>';
+  }).join('');
+  var btn = document.getElementById('transConfirmBtn');
+  btn.className = 'px-5 py-2 text-white text-sm font-semibold rounded-lg transition-colors '+t.color;
+  btn.textContent = t.label;
   document.getElementById('transModal').classList.remove('hidden');
 }
 
 function executeTransition() {
-  if (!pendingTransition) return;
-  const { devId, next, fields, label } = pendingTransition;
+  doExecuteTransition();
+}
 
-  // Validate
-  for (const f of (fields||[])) {
+/* BUG FIX 2: Unified transition executor — works for both modal and direct */
+function doExecuteTransition() {
+  if (!pendingTransition) return;
+  var devId = pendingTransition.devId;
+  var next = pendingTransition.next;
+  var fields = pendingTransition.fields;
+  var label = pendingTransition.label;
+
+  // Validate required fields
+  for (var i=0; i<(fields||[]).length; i++) {
+    var f = fields[i];
     if (f.required) {
-      const el = document.getElementById('tf_'+f.id);
+      var el = document.getElementById('tf_'+f.id);
       if (!el||!el.value.trim()) { toast(f.label+' is required', true); return; }
     }
   }
 
-  const idx = db.deviations.findIndex(d=>d.id===devId);
+  var idx = db.deviations.findIndex(function(d){return d.id===devId;});
   if (idx===-1) return;
-  const dev = db.deviations[idx];
-  const now = new Date().toISOString();
+  var dev = db.deviations[idx];
+  var now = new Date().toISOString();
 
-  // Collect values
-  const updates = {};
-  for (const f of (fields||[])) {
-    const el = document.getElementById('tf_'+f.id);
-    if (el && el.value.trim()) updates[f.id] = el.value.trim();
+  // Collect field values
+  var updates = {};
+  for (var j=0; j<(fields||[]).length; j++) {
+    var fld = fields[j];
+    var el2 = document.getElementById('tf_'+fld.id);
+    if (el2 && el2.value.trim()) updates[fld.id] = el2.value.trim();
   }
 
-  // Special: capaRequired flag
   if (next==='CAPA Open') updates.capaRequired = true;
   if (next==='Ready to Close') updates.capaRequired = false;
 
-  const changes = { status:{from:dev.status,to:next} };
-  Object.entries(updates).forEach(([k,v])=>{ if (k!=='capaRequired') changes[k]={from:dev[k]??'',to:v}; });
+  var changes = { status:{from:dev.status,to:next} };
+  Object.keys(updates).forEach(function(k){ if (k!=='capaRequired') changes[k]={from:dev[k]||'',to:updates[k]}; });
 
-  db.deviations[idx] = { ...dev, ...updates, status:next,
+  db.deviations[idx] = Object.assign({}, dev, updates, {status:next,
     updatedAt:now, updatedBy:currentUser,
-    auditLog:[...(dev.auditLog||[]), auditEntry(label.replace(/&amp;/g,'&'), changes)] };
+    auditLog:(dev.auditLog||[]).concat([auditEntry(label.replace(/&amp;/g,'&'), changes)])});
 
-  // Auto-create CAPA record when transitioning to CAPA Open
+  // Auto-create CAPA
   if (next==='CAPA Open') {
-    const capaId = genCapa();
-    db.capas.push({
-      id:capaId, relatedDeviation:devId, status:'Open',
-      actions: updates.capaActions||'', effectiveness:'',
-      createdAt:now, createdBy:currentUser, updatedAt:now, updatedBy:currentUser
-    });
+    var capaId = genCapa();
+    db.capas.push({id:capaId, relatedDeviation:devId, status:'Open',
+      actions:updates.capaActions||'', effectiveness:'',
+      createdAt:now, createdBy:currentUser, updatedAt:now, updatedBy:currentUser});
     db.deviations[idx].linkedCapaId = capaId;
-    toast(next + ' — CAPA ' + capaId + ' auto-created');
+    toast(next+' \u2014 CAPA '+capaId+' auto-created');
   } else {
-    toast('Status → ' + next);
+    toast('Status \u2192 '+next);
   }
 
   saveDb();
   closeModal('transModal');
   pendingTransition = null;
   updateBadges();
+  // Refresh the detail view immediately
   if (activeDetailId === devId) viewDev(devId);
 }
 
-/* ───────────────────────────────
-   CAPA — TABLE
-─────────────────────────────── */
+/* CAPA TABLE */
 function capaStBadge(s) {
-  const map = { Open:'s-capaopen','In Progress':'s-capawip',Verification:'s-capaver',Closed:'s-closed' };
-  return `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${map[s]||'s-draft'}">${esc(s)||'—'}</span>`;
+  var map = {Open:'s-capaopen','In Progress':'s-capawip',Verification:'s-capaver',Closed:'s-closed'};
+  return '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold '+(map[s]||'s-draft')+'">'+(esc(s)||'\u2014')+'</span>';
 }
 
 function renderCapaTable() {
-  const fStatus = document.getElementById('capaFltStatus')?.value||'';
-  let rows = [...db.capas].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
-  if (fStatus) rows = rows.filter(c=>c.status===fStatus);
-
-  const tbody = document.getElementById('capaTableBody');
-  const empty = document.getElementById('capaEmpty');
+  var fStatus = document.getElementById('capaFltStatus')?.value||'';
+  var rows = db.capas.slice().sort(function(a,b){return new Date(b.createdAt)-new Date(a.createdAt);});
+  if (fStatus) rows=rows.filter(function(c){return c.status===fStatus;});
+  var tbody = document.getElementById('capaTableBody');
+  var empty = document.getElementById('capaEmpty');
   if (rows.length===0){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
-
-  tbody.innerHTML = rows.map(c=>{
-    const dev = c.relatedDeviation ? db.deviations.find(d=>d.id===c.relatedDeviation) : null;
-    return `<tr>
-      <td class="px-6 py-3.5 font-mono text-xs font-bold text-blue-600 whitespace-nowrap">${esc(c.id)}</td>
-      <td class="px-4 py-3.5">
-        ${dev?`<span class="font-mono text-xs text-blue-600 cursor-pointer hover:underline" onclick="viewDev('${esc(dev.id)}')">${esc(dev.id)}</span>
-               <p class="text-xs text-slate-500 mt-0.5">${esc((dev.title||'').substring(0,40))}${(dev.title||'').length>40?'…':''}</p>`
-            : '<span class="text-slate-400 text-xs">—</span>'}
-      </td>
-      <td class="px-4 py-3.5 text-slate-700 text-sm max-w-xs truncate">
-        ${esc((c.actions||'').substring(0,80))}${(c.actions||'').length>80?'…':''}
-      </td>
-      <td class="px-4 py-3.5 whitespace-nowrap">${capaStBadge(c.status)}</td>
-      <td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">${esc(c.createdBy)||'—'}</td>
-      <td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">${fmtDate(c.createdAt)}</td>
-      <td class="px-4 py-3.5 text-right whitespace-nowrap">
-        <button onclick="openCapaForm('${esc(c.id)}')"
-          class="text-xs text-slate-500 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-50 transition-colors">Edit</button>
-      </td>
-    </tr>`;
+  tbody.innerHTML = rows.map(function(c){
+    var dev = c.relatedDeviation ? db.deviations.find(function(d){return d.id===c.relatedDeviation;}) : null;
+    return '<tr><td class="px-6 py-3.5 font-mono text-xs font-bold text-blue-600 whitespace-nowrap">'+esc(c.id)+'</td>'+
+      '<td class="px-4 py-3.5">'+(dev?'<span class="font-mono text-xs text-blue-600 cursor-pointer hover:underline" onclick="viewDev(\''+esc(dev.id)+'\')">'+esc(dev.id)+'</span><p class="text-xs text-slate-500 mt-0.5">'+esc((dev.title||'').substring(0,40))+((dev.title||'').length>40?'\u2026':'')+'</p>':'<span class="text-slate-400 text-xs">\u2014</span>')+'</td>'+
+      '<td class="px-4 py-3.5 text-slate-700 text-sm max-w-xs truncate">'+esc((c.actions||'').substring(0,80))+((c.actions||'').length>80?'\u2026':'')+'</td>'+
+      '<td class="px-4 py-3.5 whitespace-nowrap">'+capaStBadge(c.status)+'</td>'+
+      '<td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">'+(esc(c.createdBy)||'\u2014')+'</td>'+
+      '<td class="px-4 py-3.5 text-slate-500 text-xs whitespace-nowrap">'+fmtDate(c.createdAt)+'</td>'+
+      '<td class="px-4 py-3.5 text-right whitespace-nowrap"><button type="button" onclick="openCapaForm(\''+esc(c.id)+'\')" class="text-xs text-slate-500 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-50 transition-colors">Edit</button></td></tr>';
   }).join('');
 }
 
-/* ───────────────────────────────
-   CAPA — FORM
-─────────────────────────────── */
+/* CAPA FORM */
 function openCapaForm(editId) {
-  const sel = document.getElementById('capaFDev');
+  var sel = document.getElementById('capaFDev');
   sel.innerHTML = '<option value="">None (standalone)</option>' +
-    db.deviations.map(d=>`<option value="${esc(d.id)}">${esc(d.id)} — ${esc(d.title)}</option>`).join('');
-
+    db.deviations.map(function(d){return '<option value="'+esc(d.id)+'">'+esc(d.id)+' \u2014 '+esc(d.title)+'</option>';}).join('');
   document.getElementById('capaFormEditId').value = editId||'';
-
   if (editId) {
-    const c = db.capas.find(x=>x.id===editId);
+    var c = db.capas.find(function(x){return x.id===editId;});
     if (!c) return;
     document.getElementById('capaFormHeading').textContent = 'Edit CAPA';
-    document.getElementById('capaFormSub').textContent     = c.id;
-    document.getElementById('capaFDev').value             = c.relatedDeviation||'';
-    document.getElementById('capaFStatus').value          = c.status;
-    document.getElementById('capaFActions').value         = c.actions||'';
-    document.getElementById('capaFEffectiveness').value   = c.effectiveness||'';
+    document.getElementById('capaFormSub').textContent = c.id;
+    document.getElementById('capaFDev').value = c.relatedDeviation||'';
+    document.getElementById('capaFStatus').value = c.status;
+    document.getElementById('capaFActions').value = c.actions||'';
+    document.getElementById('capaFEffectiveness').value = c.effectiveness||'';
   } else {
     document.getElementById('capaFormHeading').textContent = 'New CAPA';
-    document.getElementById('capaFormSub').textContent     = 'ID will be assigned on save';
-    document.getElementById('capaFDev').value             = '';
-    document.getElementById('capaFStatus').value          = 'Open';
-    document.getElementById('capaFActions').value         = '';
-    document.getElementById('capaFEffectiveness').value   = '';
+    document.getElementById('capaFormSub').textContent = 'ID will be assigned on save';
+    document.getElementById('capaFDev').value = '';
+    document.getElementById('capaFStatus').value = 'Open';
+    document.getElementById('capaFActions').value = '';
+    document.getElementById('capaFEffectiveness').value = '';
   }
   document.getElementById('capaFormModal').classList.remove('hidden');
 }
 
 function saveCapa() {
-  const actions = document.getElementById('capaFActions').value.trim();
+  var actions = document.getElementById('capaFActions').value.trim();
   if (!actions) { toast('Actions field is required', true); return; }
-  const editId = document.getElementById('capaFormEditId').value;
-  const now = new Date().toISOString();
-  const patch = {
+  var editId = document.getElementById('capaFormEditId').value;
+  var now = new Date().toISOString();
+  var patch = {
     relatedDeviation: document.getElementById('capaFDev').value,
-    status:           document.getElementById('capaFStatus').value,
-    actions,
-    effectiveness:    document.getElementById('capaFEffectiveness').value,
+    status: document.getElementById('capaFStatus').value,
+    actions: actions,
+    effectiveness: document.getElementById('capaFEffectiveness').value,
   };
   if (editId) {
-    const idx = db.capas.findIndex(c=>c.id===editId);
+    var idx = db.capas.findIndex(function(c){return c.id===editId;});
     if (idx===-1) return;
-    db.capas[idx] = { ...db.capas[idx], ...patch, updatedAt:now, updatedBy:currentUser };
+    db.capas[idx] = Object.assign({}, db.capas[idx], patch, {updatedAt:now, updatedBy:currentUser});
     toast('CAPA updated');
   } else {
-    const id = genCapa();
-    db.capas.push({ id, ...patch, createdAt:now, createdBy:currentUser, updatedAt:now, updatedBy:currentUser });
+    var id = genCapa();
+    db.capas.push(Object.assign({id:id}, patch, {createdAt:now, createdBy:currentUser, updatedAt:now, updatedBy:currentUser}));
     toast(id+' created');
   }
   saveDb();
@@ -1455,67 +1326,46 @@ function saveCapa() {
   updateBadges();
 }
 
-/* ───────────────────────────────
-   PERMISSIONS PAGE
-─────────────────────────────── */
+/* PERMISSIONS PAGE */
 function renderPermissions() {
   document.getElementById('permCurrentRole').textContent = currentRole;
   document.getElementById('permRoleDesc').textContent = ROLE_CAPTIONS[currentRole]||'';
+  var roleColorMap = {Reporter:'bg-blue-50 border-blue-200 text-blue-900','QA Reviewer':'bg-violet-50 border-violet-200 text-violet-900',Investigator:'bg-amber-50 border-amber-200 text-amber-900','CAPA Owner':'bg-orange-50 border-orange-200 text-orange-900','QA Lead':'bg-green-50 border-green-200 text-green-900'};
+  var roles = ['Reporter','QA Reviewer','Investigator','CAPA Owner','QA Lead'];
+  document.getElementById('roleCards').innerHTML = roles.map(function(r){
+    return '<div class="border rounded-xl p-4 '+(roleColorMap[r]||'bg-slate-50 border-slate-200')+' '+(r===currentRole?'ring-2 ring-offset-1 ring-blue-500':'')+'">'+
+      '<div class="flex items-center justify-between mb-2"><p class="font-bold text-sm">'+esc(r)+'</p>'+
+      (r===currentRole?'<span class="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full font-medium">Current</span>':'')+'</div>'+
+      '<p class="text-xs leading-relaxed opacity-80">'+esc(ROLE_CAPTIONS[r])+'</p>'+
+      '<button type="button" onclick="changeRole(\''+esc(r)+'\')" class="mt-3 text-xs underline opacity-70 hover:opacity-100">Switch to this role</button></div>';
+  }).join('');
 
-  const roleColorMap = { Reporter:'bg-blue-50 border-blue-200 text-blue-900', 'QA Reviewer':'bg-violet-50 border-violet-200 text-violet-900', Investigator:'bg-amber-50 border-amber-200 text-amber-900', 'CAPA Owner':'bg-orange-50 border-orange-200 text-orange-900', 'QA Lead':'bg-green-50 border-green-200 text-green-900' };
-  const roles = ['Reporter','QA Reviewer','Investigator','CAPA Owner','QA Lead'];
-
-  document.getElementById('roleCards').innerHTML = roles.map(r=>`
-    <div class="border rounded-xl p-4 ${roleColorMap[r]||'bg-slate-50 border-slate-200'} ${r===currentRole?'ring-2 ring-offset-1 ring-blue-500':''}">
-      <div class="flex items-center justify-between mb-2">
-        <p class="font-bold text-sm">${esc(r)}</p>
-        ${r===currentRole?'<span class="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full font-medium">Current</span>':''}
-      </div>
-      <p class="text-xs leading-relaxed opacity-80">${esc(ROLE_CAPTIONS[r])}</p>
-      <button onclick="changeRole('${esc(r)}')" class="mt-3 text-xs underline opacity-70 hover:opacity-100">Switch to this role</button>
-    </div>`).join('');
-
-  // Matrix
-  const check = `<svg class="w-4 h-4 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>`;
-  const cross = `<svg class="w-4 h-4 text-slate-300 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>`;
-
-  document.getElementById('permMatrix').innerHTML = `
-    <thead class="bg-slate-50 border-b border-slate-200">
-      <tr>
-        <th class="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-1/3">Action</th>
-        ${roles.map(r=>`<th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-center whitespace-nowrap">${esc(r)}</th>`).join('')}
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-slate-100">
-      ${PERMISSIONS_MATRIX.map(row=>`
-        <tr class="hover:bg-slate-50">
-          <td class="px-6 py-3 text-sm text-slate-700 font-medium">${esc(row.action)}</td>
-          ${roles.map(r=>`<td class="px-4 py-3 text-center">${row[r]?check:cross}</td>`).join('')}
-        </tr>`).join('')}
-    </tbody>`;
+  var check = '<svg class="w-4 h-4 text-green-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>';
+  var cross = '<svg class="w-4 h-4 text-slate-300 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+  document.getElementById('permMatrix').innerHTML =
+    '<thead class="bg-slate-50 border-b border-slate-200"><tr>'+
+      '<th class="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-1/3">Action</th>'+
+      roles.map(function(r){return '<th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-center whitespace-nowrap">'+esc(r)+'</th>';}).join('')+
+    '</tr></thead><tbody class="divide-y divide-slate-100">'+
+    PERMISSIONS_MATRIX.map(function(row){return '<tr class="hover:bg-slate-50"><td class="px-6 py-3 text-sm text-slate-700 font-medium">'+esc(row.action)+'</td>'+
+      roles.map(function(r){return '<td class="px-4 py-3 text-center">'+(row[r]?check:cross)+'</td>';}).join('')+'</tr>';}).join('')+
+    '</tbody>';
 }
 
-/* ───────────────────────────────
-   KEYBOARD
-─────────────────────────────── */
-document.addEventListener('keydown', e=>{
+/* KEYBOARD */
+document.addEventListener('keydown', function(e){
   if (e.key==='Escape') {
-    ['devFormModal','devDetailModal','capaFormModal','transModal'].forEach(id=>{
+    ['devFormModal','devDetailModal','capaFormModal','transModal'].forEach(function(id){
       document.getElementById(id).classList.add('hidden');
     });
   }
 });
 
-/* ───────────────────────────────
-   INIT
-─────────────────────────────── */
-window.addEventListener('load', ()=>{
+/* INIT */
+window.addEventListener('load', function(){
   loadDb();
-  if (currentUser) {
-    initApp();
-  } else {
-    setTimeout(()=>document.getElementById('loginName').focus(), 80);
-  }
+  if (currentUser) { initApp(); }
+  else { setTimeout(function(){document.getElementById('loginName').focus();}, 80); }
 });
 </script>
 </body>
