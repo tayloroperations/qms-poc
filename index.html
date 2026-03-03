@@ -580,6 +580,15 @@
 <script>
 'use strict';
 
+/* BUTTON LOCK — prevents double-clicks and gives instant feedback */
+var _btnLock = false;
+function lockButtons() {
+  if (_btnLock) return false; // already locked, reject the click
+  _btnLock = true;
+  setTimeout(function(){ _btnLock = false; }, 600); // unlock after 600ms
+  return true; // proceed
+}
+
 /* DATA STORE */
 let currentUser = '';
 let currentRole = 'Reporter';
@@ -964,6 +973,7 @@ function openDevForm(editId) {
 
 /* BUG FIX 1: saveDev now reliably closes modal and navigates */
 function saveDev(action) {
+  if (!lockButtons()) return; // prevent double-click
   var title = document.getElementById('devFTitle').value.trim();
   if (!title) { toast('Title is required', true); return; }
   // flush pending tag input
@@ -991,7 +1001,6 @@ function saveDev(action) {
     var changes = diffFields(old, patch, Object.keys(patch));
     db.deviations[idx] = Object.assign({}, old, patch, {updatedAt:now, updatedBy:currentUser,
       auditLog:(old.auditLog||[]).concat([auditEntry('Updated', changes)])});
-    toast('Deviation updated');
   } else {
     var newStatus = action === 'submit' ? 'Submitted' : 'Draft';
     var id = genDev();
@@ -1008,8 +1017,9 @@ function saveDev(action) {
   }
   saveDb();
   closeModal('devFormModal');
+  if (editId) toast('Deviation updated');
   updateBadges();
-  showView('deviations');
+  setTimeout(function(){ showView('deviations'); }, 50);
 }
 
 /* DEVIATIONS DETAIL */
@@ -1189,6 +1199,7 @@ function executeTransition() {
 
 /* BUG FIX 2: Unified transition executor — works for both modal and direct */
 function doExecuteTransition() {
+  if (!lockButtons()) return; // prevent double-click
   if (!pendingTransition) return;
   var devId = pendingTransition.devId;
   var next = pendingTransition.next;
